@@ -4,7 +4,6 @@ public:
         string first="",second="";
         for(string a: word1) first+=a;
         for(string a: word2) second+=a;
-        if(first==second) return true;
-        return false;
+        return first==second;
     }
 };
