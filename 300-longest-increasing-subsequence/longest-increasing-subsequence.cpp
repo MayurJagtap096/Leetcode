@@ -3,7 +3,7 @@ public:
     int lengthOfLIS(vector<int>& nums) 
     {
         int n = nums.size();
-    vector<int> ans;
+        vector<int> ans;
  
     // Initialize the answer vector with the
     // first element of nums
