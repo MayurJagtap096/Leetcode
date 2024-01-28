@@ -21,7 +21,7 @@ public:
         }
         if(prev!=NULL) prev->next = slow->next;
         else head=head->next;
-        
+        delete slow;
         return head;
     }
 };
