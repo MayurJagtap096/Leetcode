@@ -2,21 +2,14 @@ class Solution {
 public:
     int findMaxK(vector<int>& nums) 
     {
-        int ans = INT_MIN;
-        for(int i=0;i<nums.size();i++)
+        sort(nums.begin(),nums.end());
+        for(int i=nums.size()-1;i>=0;i--)
         {
-            if(nums[i]<0)
+            if(nums[i]>0 && std::binary_search(nums.begin(),nums.end(),-nums[i]))
             {
-                for(int j=0;j<nums.size();j++)
-                {
-                    if(nums[i]*-1 == nums[j])
-                    {
-                        ans = max(nums[j],ans);
-                    }
-                }
+                return nums[i];
             }
         }
-        if(ans==INT_MIN) return -1;
-        return ans;    
+        return -1;
     }
 };
