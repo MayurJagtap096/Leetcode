@@ -2,17 +2,22 @@ class Solution {
 public:
     vector<int> minOperations(string boxes) {
         vector<int> ans(boxes.size());
-        vector<int> indices;
+
+        int cumValue=0;
+        int cumSum=0;
+
         for(int i=0;i<boxes.size();i++) {
-            if(boxes[i]=='1') indices.push_back(i);
+            ans[i] = cumSum;
+            cumValue += boxes[i]=='1' ? 1:0;
+            cumSum += cumValue;
         }
-        for(int i=0;i<boxes.size();i++) {
-            int temp=0;
-            for(int index: indices) {
-                temp += abs(index-i);
-            }
-            ans[i] = temp;
+        cumValue=0;
+        cumSum=0;
+        for(int i=boxes.size()-1;i>=0;i--) {
+            ans[i] += cumSum;
+            cumValue += boxes[i]=='1' ? 1:0;
+            cumSum += cumValue;
         }
-        return ans;   
+        return ans;
     }
 };
